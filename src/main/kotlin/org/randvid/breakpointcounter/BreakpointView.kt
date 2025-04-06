@@ -7,6 +7,11 @@ import com.intellij.xdebugger.breakpoints.XBreakpoint
 import com.intellij.xdebugger.breakpoints.XBreakpointListener
 import javax.swing.JComponent
 
+/*
+ * BreakpointView
+ * Creates the server with breakpoint counter page
+ * Accesses and updates that page when something happens to the breakpoints
+ */
 class BreakpointView(project: Project) : Disposable {
     private val jcefBrowser: JBCefBrowser
     val component: JComponent

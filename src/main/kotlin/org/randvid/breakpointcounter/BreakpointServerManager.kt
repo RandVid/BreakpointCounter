@@ -14,6 +14,11 @@ import org.eclipse.jetty.server.Server
 import org.eclipse.jetty.servlet.ServletContextHandler
 import org.eclipse.jetty.servlet.ServletHolder
 
+/*
+ * BreakpointServerManager
+ * Manages the server and
+ * updates the pages when they are accessed
+ */
 class BreakpointServerManager(private val project: Project) : Disposable {
     private val server: Server = Server(15050)
     private val srcPath = "/"
@@ -37,6 +42,11 @@ class BreakpointServerManager(private val project: Project) : Disposable {
         }
     }
 
+    /*
+     * updateHtml
+     * Updates the information of breakpoints
+     * And returns html code with updated information
+     */
     private fun updateHtml(): String {
         return ApplicationManager.getApplication().runReadAction<String> {
             val breakpoints = XDebuggerManager.getInstance(project).breakpointManager.allBreakpoints.filter {
