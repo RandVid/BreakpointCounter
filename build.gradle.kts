@@ -20,6 +20,11 @@ intellij {
     plugins.set(listOf(/* Plugin Dependencies */))
 }
 
+dependencies {
+    implementation("org.eclipse.jetty:jetty-server:11.0.25")
+    implementation("org.eclipse.jetty:jetty-servlet:11.0.25")
+}
+
 tasks {
     // Set the JVM compatibility versions
     withType<JavaCompile> {

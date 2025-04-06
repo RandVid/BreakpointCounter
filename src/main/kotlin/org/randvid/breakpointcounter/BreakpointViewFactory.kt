@@ -1,6 +1,7 @@
 package org.randvid.breakpointcounter
 
 import com.intellij.openapi.project.Project
+import com.intellij.openapi.util.Disposer
 import com.intellij.openapi.wm.ToolWindow
 import com.intellij.openapi.wm.ToolWindowFactory
 
@@ -15,5 +16,7 @@ class BreakpointViewFactory : ToolWindowFactory {
         val view = BreakpointView(project)
         val content = contentManager.factory.createContent(view.component, "", false)
         contentManager.addContent(content)
+
+        Disposer.register(content, view)
     }
 }
