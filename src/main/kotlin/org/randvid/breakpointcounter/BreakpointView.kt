@@ -25,7 +25,7 @@ class BreakpointView(project: Project) : Disposable {
             XBreakpointListener.TOPIC,
             object : XBreakpointListener<XBreakpoint<*>> {
                 override fun breakpointAdded(breakpoint: XBreakpoint<*>) =
-                    jcefBrowser.loadURL("http://localhost:15050/breakpoints") // fixed port here
+                    jcefBrowser.loadURL("http://localhost:15050/breakpoints")
                 override fun breakpointRemoved(breakpoint: XBreakpoint<*>) =
                     jcefBrowser.loadURL("http://localhost:15050/breakpoints")
                 override fun breakpointChanged(breakpoint: XBreakpoint<*>) =

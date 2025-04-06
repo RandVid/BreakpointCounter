@@ -35,7 +35,6 @@ class BreakpointServerManager(private val project: Project) : Disposable {
         ApplicationManager.getApplication().executeOnPooledThread {
             server.start()
         }
-        println("[DEBUG] Server started")
     }
 
     private fun updateHtml(): String {
@@ -47,7 +46,6 @@ class BreakpointServerManager(private val project: Project) : Disposable {
             val foreground = colorScheme.defaultForeground.let { color ->
                 "#${ColorUtil.toHex(color)}"
             }
-            println("[DEBUG] Foreground: $foreground.")
             val fontFamily = colorScheme.editorFontName
             """
                 <html>
@@ -68,7 +66,6 @@ class BreakpointServerManager(private val project: Project) : Disposable {
         try {
             if (server.isStarted) {
                 server.stop()
-                println("[DEBUG] Server stopped")
             }
         } catch (e: Exception) {
             printlnError("Error stopping server: ${e.message}")
