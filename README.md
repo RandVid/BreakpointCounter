@@ -14,18 +14,11 @@ A JetBrains IDE plugin that displays all project breakpoints in a dedicated tool
 
 ---
 
-## Installation  
-
-1. Download the latest `.jar` from [Releases](https://github.com/RandVid/BreakpointCounter/releases)  
-2. **Settings/Preferences** → **Plugins** → ⚙️ → **Install Plugin from Disk...**  
-3. Select the downloaded file and restart the IDE  
-
----
-
 ## Usage  
 1. Open any project  
-2. Find the **Breakpoint Counter** on the right bar
-3. Interact with breakpoints as usual – the view updates automatically  
+2. Go to **View -> Tool Windows -> Breakpoint Counter** \
+   Or find the **Breakpoint Counter** on the right bar
+4. Interact with breakpoints as usual – the view updates automatically  
 
 ---
 
@@ -42,15 +35,6 @@ A JetBrains IDE plugin that displays all project breakpoints in a dedicated tool
 - **JCEF** (Chromium Embedded Framework)  
 - **Jetty** (Embedded HTTP server)  
 - `XBreakpointListener` for real-time events  
-
----
-
-## Build from Source  
-```bash
-git clone https://github.com/your-repo/breakpoint-counter.git
-cd breakpoint-counter
-./gradlew build
-```
 
 ---
 
