@@ -22,6 +22,11 @@ A JetBrains IDE plugin that displays all project breakpoints in a dedicated tool
 
 ---
 
+## Screenshots
+![](https://github.com/user-attachments/assets/7ae446eb-5e1f-432f-926d-06daf00a9d26)
+
+---
+
 ## Technical Details  
 ### Architecture  
 | Component               | Responsibility                          |
