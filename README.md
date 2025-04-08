@@ -40,4 +40,3 @@ A JetBrains IDE plugin that displays all project breakpoints in a dedicated tool
 
 ## Further Improvements
 - Add grouping breakpoints by files
-- Implement dynamic ports

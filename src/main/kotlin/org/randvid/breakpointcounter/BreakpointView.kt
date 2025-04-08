@@ -5,6 +5,7 @@ import com.intellij.openapi.project.Project
 import com.intellij.ui.jcef.JBCefBrowser
 import com.intellij.xdebugger.breakpoints.XBreakpoint
 import com.intellij.xdebugger.breakpoints.XBreakpointListener
+import java.net.ServerSocket
 import javax.swing.JComponent
 
 /*
@@ -16,25 +17,30 @@ class BreakpointView(project: Project) : Disposable {
     private val jcefBrowser: JBCefBrowser
     val component: JComponent
     val server: BreakpointServerManager
+    val port: Int = ServerSocket(0).use { socket ->
+        socket.localPort
+    }
+    val address: String = "http://localhost:$port/breakpoints"
 
     override fun dispose() {
         server.dispose()
     }
 
     init {
-        server = BreakpointServerManager(project)
-        jcefBrowser = JBCefBrowser("http://localhost:15050/breakpoints")
+        server = BreakpointServerManager(project, port)
+        jcefBrowser = JBCefBrowser(address)
         component = jcefBrowser.component
+        println(port)
 
         project.messageBus.connect().subscribe(
             XBreakpointListener.TOPIC,
             object : XBreakpointListener<XBreakpoint<*>> {
                 override fun breakpointAdded(breakpoint: XBreakpoint<*>) =
-                    jcefBrowser.loadURL("http://localhost:15050/breakpoints")
+                    jcefBrowser.loadURL(address)
                 override fun breakpointRemoved(breakpoint: XBreakpoint<*>) =
-                    jcefBrowser.loadURL("http://localhost:15050/breakpoints")
+                    jcefBrowser.loadURL(address)
                 override fun breakpointChanged(breakpoint: XBreakpoint<*>) =
-                    jcefBrowser.loadURL("http://localhost:15050/breakpoints")
+                    jcefBrowser.loadURL(address)
             }
         )
     }

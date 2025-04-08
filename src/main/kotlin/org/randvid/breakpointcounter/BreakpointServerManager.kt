@@ -19,9 +19,9 @@ import org.eclipse.jetty.servlet.ServletHolder
  * Manages the server and
  * updates the pages when they are accessed
  */
-class BreakpointServerManager(private val project: Project) : Disposable {
+class BreakpointServerManager(private val project: Project, port: Int) : Disposable {
     // it is possible to implement dynamic port system in the future
-    private val server: Server = Server(15050)
+    private val server: Server = Server(port)
     private val srcPath = "/"
 
     init {
